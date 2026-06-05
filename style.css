@@ -1,0 +1,1331 @@
+/* ==========================================================================
+   STYLE.CSS - FLAT & MINIMALIST PORTFOLIO FOR DO NA TRA
+   Strictly Component-based with BEM Naming Convention
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ĐỊNH NGHĨA CSS VARIABLES (DARK MODE & SPACING)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Color Palette (Flat Solid Colors - No Gradients, No 3D Shadows) */
+    --bg-primary: #0f172a;
+    /* Slate 900 - Nền tối trầm lắng */
+    --bg-surface: #1e293b;
+    /* Slate 800 - Nền khối thông tin phẳng */
+    --bg-surface-active: #334155;
+    /* Slate 700 - Trạng thái hoạt động */
+
+    --bg-header-scrolled: rgba(15, 23, 42, 0.9);
+    --bg-card-container: rgba(15, 23, 42, 0.4);
+    --bg-achievement-card: rgba(30, 41, 59, 0.4);
+    --bg-achievement-card-hover: rgba(16, 185, 129, 0.12);
+    /* Translucent emerald tint */
+
+    --border-color: #334155;
+    /* Slate 700 - Viền phẳng mảnh */
+    --border-color-hover: #475569;
+    /* Slate 600 - Viền phẳng nổi bật nhẹ */
+
+    --text-primary: #ffffff;
+    /* Chữ trắng tinh khiết */
+    --text-secondary: #94a3b8;
+    /* Slate 400 - Chữ xám nhạt */
+    --text-muted: #64748b;
+    /* Slate 500 - Chữ xám mờ */
+
+    --accent: #10b981;
+    /* Lục bảo phẳng sáng (Emerald 500) */
+    --accent-hover: #059669;
+    /* Emerald 600 */
+    --accent-dim: rgba(16, 185, 129, 0.1);
+
+    --red-flat: #f43f5e;
+    --yellow-flat: #eab308;
+    --green-flat: #22c55e;
+
+    --error: #f43f5e;
+    --success: #10b981;
+
+    /* Font Systems */
+    --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Spacing System (Utility base) */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-section: 5rem;
+
+    /* Layout Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
+
+    /* Motion */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+}
+
+[data-theme="light"] {
+    --bg-primary: #E9E9E9;
+    /* Slate 50 - Nền sáng */
+    --bg-surface: #E9E9E9;
+    /* Trùng màu với nền chính E9E9E9 */
+    --bg-surface-active: #d1d5db;
+    /* Gray 300 - Trạng thái hoạt động tương ứng với nền E9E9E9 */
+
+    --bg-header-scrolled: rgba(233, 233, 233, 0.85);
+    /* Translucent #E9E9E9 header background */
+    --bg-card-container: #dedede;
+    /* Hài hòa với nền #E9E9E9 */
+    --bg-achievement-card: rgba(255, 255, 255, 0.6);
+    /* Giữ độ tương phản tốt trên nền tối hơn */
+    --bg-achievement-card-hover: rgba(5, 150, 105, 0.08);
+    /* Beautiful premium emerald tint for light mode hover */
+
+    --border-color: #cccccc;
+    /* Đậm hơn chút để thấy rõ border trên nền E9E9E9 */
+    --border-color-hover: #b3b3b3;
+    /* Slate 300 */
+
+    --text-primary: #0f172a;
+    /* Slate 900 - Chữ tối */
+    --text-secondary: #334155;
+    /* Tối hơn chút để tương phản tốt trên E9E9E9 */
+    --text-muted: #64748b;
+    /* Gray 500 */
+
+    /* Emerald accent remains solid and premium */
+    --accent: #059669;
+    /* Emerald 600 */
+    --accent-hover: #047857;
+    /* Emerald 700 */
+    --accent-dim: rgba(5, 150, 105, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   2. KHỞI TẠO CƠ BẢN (GLOBAL RESETS)
+   -------------------------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* Custom flat scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   3. BẮT BUỘC: CÁC LỚP TIỆN ÍCH (UTILITY CLASSES)
+   -------------------------------------------------------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.section-padding {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.title-primary {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.title-primary::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background-color: var(--accent);
+    margin: var(--spacing-xs) auto 0 auto;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: 2px solid var(--accent);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.25rem;
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.btn-outline:active {
+    transform: translateY(0);
+}
+
+/* Helpers */
+.items-center {
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* --------------------------------------------------------------------------
+   4. HEADER BLOCK & ELEMENTS (.header)
+   -------------------------------------------------------------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid transparent;
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+/* Scrolled state active via JS */
+.header--scrolled {
+    background-color: var(--bg-header-scrolled);
+    border-bottom-color: var(--border-color);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.header__container {
+    height: 70px;
+}
+
+.header__logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+}
+
+.header__logo::after {
+    content: '.';
+    color: var(--accent);
+}
+
+.header__nav {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.header__link {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.header__link:hover {
+    color: var(--text-primary);
+}
+
+.header__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width var(--transition-fast);
+}
+
+.header__link:hover::after {
+    width: 100%;
+}
+
+.header__actions {
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO BLOCK & ELEMENTS (.hero)
+   -------------------------------------------------------------------------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.hero__content {
+    display: flex;
+    flex-col: column;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.hero__title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.hero__typing {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    border-right: 2px solid var(--accent);
+    animation: hero-cursor 0.75s step-end infinite;
+    padding-right: 4px;
+}
+
+.hero__actions {
+    margin-top: var(--spacing-sm);
+}
+
+.hero__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Enable 3D space */
+}
+
+/* Container holding front and back faces */
+.hero__card-container {
+    width: 320px;
+    height: 320px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+/* Hover effect: Flip card */
+.hero__card-container:hover {
+    transform: rotateY(180deg);
+}
+
+/* Base style for both faces */
+.hero__avatar-face,
+.hero__snippet-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Safari support */
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-color);
+    box-sizing: border-box;
+    overflow: hidden;
+    transform: translateZ(0); /* Force hardware acceleration */
+    will-change: transform;
+}
+
+/* Avatar Face (Front) */
+.hero__avatar-face {
+    background-color: var(--bg-surface);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Snippet Face (Back) */
+.hero__snippet-face {
+    background-color: var(--bg-surface);
+    transform: rotateY(180deg); /* Render on the back side */
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Flat Code Snippet Card override */
+.hero__snippet {
+    width: 100%;
+    height: 100%;
+}
+
+.hero__snippet-header {
+    gap: 8px;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-xs);
+}
+
+.hero__snippet-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+}
+
+.hero__snippet-dot--red {
+    background-color: var(--red-flat);
+}
+
+.hero__snippet-dot--yellow {
+    background-color: var(--yellow-flat);
+}
+
+.hero__snippet-dot--green {
+    background-color: var(--green-flat);
+}
+
+.hero__snippet-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: 0.8125rem;
+}
+
+.hero__snippet-line {
+    color: var(--text-secondary);
+}
+
+.hero__snippet-line--indent {
+    padding-left: var(--spacing-lg);
+}
+
+.hero__snippet-keyword {
+    color: #f43f5e;
+}
+
+.hero__snippet-name {
+    color: #38bdf8;
+}
+
+.hero__snippet-str {
+    color: #10b981;
+}
+
+@keyframes hero-cursor {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--accent);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. BỐ CỤC GIỚI THIỆU 2 CỘT 6/6 (.about)
+   -------------------------------------------------------------------------- */
+.about__card {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: stretch;
+    transition: border-color var(--transition-fast);
+}
+
+.about__card:hover {
+    border-color: var(--accent);
+}
+
+.about__personal,
+.about__goals {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.about__vertical-divider {
+    width: 2px;
+    background-color: var(--border-color);
+    align-self: stretch;
+}
+
+.about__subtitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--spacing-xs);
+}
+
+.about__text {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.about__list {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    padding-left: var(--spacing-md);
+    list-style-type: square;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+/* Devider phẳng mảnh phân chia mục tiêu */
+.about__divider {
+    height: 2px;
+    background-color: var(--border-color);
+    width: 100%;
+    margin: var(--spacing-xs) 0;
+}
+
+.about__goal-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+/* --------------------------------------------------------------------------
+   7. SERVICES BLOCK (.services)
+   -------------------------------------------------------------------------- */
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.card-service {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.card-service:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.card-service__icon {
+    width: 44px;
+    height: 44px;
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xs);
+}
+
+.card-service__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.card-service__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.card-service__desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   8. PROJECTS VERTICAL TIMELINE (.timeline)
+   -------------------------------------------------------------------------- */
+.timeline__container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: var(--spacing-xl);
+}
+
+.timeline__container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8px;
+    width: 2px;
+    height: 100%;
+    background-color: var(--border-color);
+}
+
+.timeline__item {
+    position: relative;
+    margin-bottom: var(--spacing-xl);
+}
+
+.timeline__item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline__marker {
+    position: absolute;
+    top: 8px;
+    left: calc(-1 * var(--spacing-xl) + 4px);
+    width: 10px;
+    height: 10px;
+    background-color: var(--bg-primary);
+    border: 3px solid var(--accent);
+    border-radius: var(--radius-full);
+    z-index: 2;
+    transition: transform var(--transition-fast);
+}
+
+.timeline__item:hover .timeline__marker {
+    transform: scale(1.3);
+}
+
+/* Desktop Split Layout (Staggered So Le - Cả Dự án & Thành tích) */
+@media (min-width: 992px) {
+    .timeline__container {
+        padding-left: 0;
+        max-width: 1140px;
+    }
+
+    .timeline__container::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline__item {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: calc(var(--spacing-xl) * 2);
+        align-items: start;
+    }
+
+    /* Odd row: Project on left, Achievement on right */
+    .timeline__item:nth-child(odd) .timeline__project {
+        order: 1;
+        margin-bottom: 0;
+    }
+
+    .timeline__item:nth-child(odd) .timeline__achievement {
+        order: 2;
+        justify-content: flex-start;
+    }
+
+    /* Even row: Achievement on left, Project on right */
+    .timeline__item:nth-child(even) .timeline__project {
+        order: 2;
+        margin-bottom: 0;
+    }
+
+    .timeline__item:nth-child(even) .timeline__achievement {
+        order: 1;
+        justify-content: flex-end;
+    }
+
+    /* Marker positioned strictly in the middle */
+    .timeline__marker {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        z-index: 2;
+        transition: transform var(--transition-fast);
+    }
+
+    .timeline__item:hover .timeline__marker {
+        transform: translateX(-50%) scale(1.3);
+    }
+}
+
+.timeline__project {
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+}
+
+@media (min-width: 992px) {
+    .timeline__project {
+        margin-bottom: 0;
+    }
+}
+
+.timeline__achievement {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Thẻ thành tích nhỏ gọn để giữ trọng tâm vào dự án */
+.achievement-card {
+    background-color: var(--bg-achievement-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform var(--transition-normal), border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-normal);
+    max-width: 380px;
+    width: 100%;
+}
+
+.achievement-card:hover {
+    border-color: var(--accent);
+    background-color: var(--bg-achievement-card-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px -6px rgba(16, 185, 129, 0.15);
+}
+
+.achievement-card__header {
+    margin-bottom: 2px;
+}
+
+.achievement-card__tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.achievement-card__icon {
+    font-size: 1rem;
+}
+
+.achievement-card__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.achievement-card__desc {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.timeline__content {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: transform var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-normal);
+}
+
+.timeline__content:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px -8px rgba(16, 185, 129, 0.18);
+}
+
+.timeline__time {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline__project-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.timeline__feature-list {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding-left: var(--spacing-md);
+    list-style-type: square;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.timeline__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+}
+
+.tech-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    background-color: var(--accent-dim);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+.timeline__actions {
+    margin-top: var(--spacing-sm);
+}
+
+/* --------------------------------------------------------------------------
+   9. SKILLS GRID (.skills)
+   -------------------------------------------------------------------------- */
+.skills__container {
+    align-items: start;
+}
+
+.skills__col {
+    background-color: var(--bg-card-container);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: border-color var(--transition-fast);
+}
+
+.skills__col:hover {
+    border-color: var(--accent);
+}
+
+.skills__subtitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    padding-bottom: var(--spacing-xs);
+}
+
+.skills__subtitle::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: var(--spacing-xs) auto 0 auto;
+}
+
+.skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+/* Soft Skills List View Styling */
+.skills__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.skills__list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 0.85rem var(--spacing-md);
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), transform var(--transition-normal), background-color var(--transition-fast);
+}
+
+.skills__list-item:hover {
+    border-color: var(--accent);
+    background-color: var(--bg-surface-active);
+    transform: translateX(8px);
+}
+
+.skills__list-icon {
+    font-size: 1.25rem;
+    width: 24px;
+    height: 24px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills__list-text {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-badge {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.skill-badge:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.skill-badge__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.skill-badge__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.skill-badge__text {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   10. CONTACT BLOCK (.contact)
+   -------------------------------------------------------------------------- */
+.contact__container {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) 0;
+}
+
+.contact__info-desc {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact__info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.contact__info-item {
+    gap: var(--spacing-md);
+    align-items: center;
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.contact__info-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.contact__info-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.contact__info-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--accent);
+}
+
+.contact__info-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__info-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.contact__info-link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.contact__info-link:hover {
+    color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   11. FOOTER BLOCK (.footer)
+   -------------------------------------------------------------------------- */
+.footer {
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-sm) 0;
+    background-color: var(--bg-primary);
+}
+
+.footer__text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.footer__thankyou {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-xs);
+    font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   12. THIẾT BỊ DI ĐỘNG (RESPONSIVE STYLES)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    :root {
+        --spacing-section: 4rem;
+    }
+
+    .grid-2-cols {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .grid-3-cols {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero__title {
+        font-size: 2.75rem;
+    }
+
+    .hero__visual {
+        order: -1;
+    }
+
+    .about__card {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+
+    .about__vertical-divider {
+        display: none;
+    }
+
+    .about__personal {
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .header__nav {
+        display: none;
+        /* Ẩn menu điều hướng trên thiết bị cực nhỏ */
+    }
+
+    .grid-3-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__title {
+        font-size: 2.25rem;
+    }
+
+    .hero__title-break {
+        display: block;
+        margin-top: 0.25rem;
+    }
+
+    .timeline__container {
+        padding-left: var(--spacing-lg);
+    }
+
+    .timeline__container::before {
+        left: 4px;
+    }
+
+    .timeline__marker {
+        left: calc(-1 * var(--spacing-lg) + 1px);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   13. COMPONENT DIALOG PHẲNG (.dialog)
+   -------------------------------------------------------------------------- */
+.dialog {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    padding: 0;
+    max-width: 1400px;
+    width: 80%;
+    margin: auto;
+    box-shadow: none;
+    /* Flat design */
+    outline: none;
+}
+
+.dialog::backdrop {
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+.dialog__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog__header {
+    padding: 0.5rem var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dialog__title {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.dialog__close-btn {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.dialog__close-btn:hover {
+    color: var(--error);
+}
+
+.dialog__body {
+    padding: var(--spacing-md);
+    background-color: var(--bg-primary);
+}
+
+.dialog__video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border-color);
+    background-color: #000;
+}
+
+/* ==========================================================================
+   14. HIỆU ỨNG CUỘN TRANG (SCROLL REVEAL & HEADER ACTIVE NAVIGATION)
+   ========================================================================== */
+.header__link--active {
+    color: var(--text-primary) !important;
+}
+
+.header__link--active::after {
+    width: 100% !important;
+}
+
+/* Scroll Reveal base state */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* Scroll Reveal visible state */
+.reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   15. THEME TOGGLE SWITCH BUTTON
+   ========================================================================== */
+.theme-toggle {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+}
+
+.theme-toggle__icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-primary);
+    position: absolute;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Toggle visibility between Sun and Moon based on theme */
+[data-theme="dark"] .theme-toggle__icon--sun {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+[data-theme="dark"] .theme-toggle__icon--moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+}
+
+[data-theme="light"] .theme-toggle__icon--sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+[data-theme="light"] .theme-toggle__icon--moon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
