@@ -33,9 +33,9 @@
     --text-muted: #64748b;
     /* Slate 500 - Chữ xám mờ */
 
-    --accent: #10b981;
+    --accent: #58c9ee;
     /* Lục bảo phẳng sáng (Emerald 500) */
-    --accent-hover: #059669;
+    --accent-hover: #45b5db;
     /* Emerald 600 */
     --accent-dim: rgba(16, 185, 129, 0.1);
 
@@ -98,9 +98,9 @@
     /* Gray 500 */
 
     /* Emerald accent remains solid and premium */
-    --accent: #059669;
+    --accent: #2388a9;
     /* Emerald 600 */
-    --accent-hover: #047857;
+    --accent-hover: #45b5db;
     /* Emerald 700 */
     --accent-dim: rgba(5, 150, 105, 0.1);
 }

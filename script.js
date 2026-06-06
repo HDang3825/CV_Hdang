@@ -1,7 +1,3 @@
-/**
- * SCRIPT.JS - LOGIC TƯƠNG TÁC CHO PORTFOLIO DO NA TRA
- * Tuân thủ phong cách lập trình phẳng tối giản và chuẩn BEM
- */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -85,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Specially features an online classroom integrated directly into the platform to reduce dependency on third-party services",
                         "Role: Backend Developer"
                     ],
-                    tags: ["NestJS", "DotNet Core 10", "SQL Server", "Redis", "Docker"],
+                    tags: ["NextJS", "DotNet Core 10", "SQL Server", "Redis", "Docker"],
                     /* video: "DEMO/DM1.mp4.mp4",*/
                     link: "https://hdang3825.github.io/DMT_LEARN_LandingPages/",
                     achievement: {
@@ -123,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Role: AI Engineer"
                     ],
                     tags: ["CNN", "LLM", "Fine-tuning", "Python", "FastAPI"],
-                    video: "https://youtu.be/Xn8NWr6jfq0",
+                    video: "https://www.youtube.com/watch?v=4LRnoNp3n8U&feature=youtu.be",
                     achievement: {
                         title: "Champion - NTTU Artificial Intelligence 2025",
                         desc: "Became the Champion of the NTTU Artificial Intelligence Competition for the first time",
@@ -157,10 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 personal: {
                     title: "About Me",
                     details: [
-                        "Software Engineering student at Nguyen Tat Thanh University (NTTU).",
-                        "Aiming to become a professional Full-stack Web & Mobile Developer.",
-                        "Passionate about Clean Code, Flat Design, and performance optimizations.",
-                        "Constantly learning new technologies to solve real-world problems."
+                        "Third-year student majoring in Data Science at Nguyen Tat Thanh University",
+                        "Possess strong communication and presentation skills, highly confident",
+                        "Demonstrate a high sense of responsibility, with the ability to work well both in teams and independently",
+                        "Orientation to develop into an AI Engineer & Data Engineer",
+                        "Passionate about AI models and high-performance, optimized data system designs",
+                        "Constantly striving to research technologies that directly solve practical needs",
+                        "Also capable of taking on programming roles as a Backend Developer"
                     ]
                 },
                 goals: [
@@ -168,18 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         emoji: "",
                         title: "Short-term Goals",
                         details: [
-                            "Graduate with honors from NTTU majoring in Software Engineering.",
-                            "Gain hands-on industry experience by building production applications.",
-                            "Fully master Agile/Scrum software development methodology."
+                            "Excellently complete the Data Science bachelor's program at NTTU.",
+                            "Gain hands-on experience through real-world corporate projects.",
+                            "Master and proficiently operate the development lifecycle of Data & AI systems."
                         ]
                     },
                     {
                         emoji: "",
                         title: "Long-term Goals",
                         details: [
-                            "Become a Senior Full-stack Engineer within 3-5 years of industry work.",
-                            "Master large-scale distributed system architectures and query scaling.",
-                            "Conduct research and specialize in Big Data and Smart Machine Learning models."
+                            "Become a Senior AI Engineer after 4 years of professional work.",
+                            "Advance to a Team Lead position for a Data or AI team after 7 years.",
+                            "Master the design of distributed systems and large-scale data processing.",
+                            "Deeply research and apply Big Data, Machine Learning models, and AI."
                         ]
                     }
                 ]
@@ -192,19 +192,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lang === 'en') {
             return [
                 {
-                    title: "Web Development",
-                    desc: "Build modern web apps using React, Next.js, and NestJS. Deliver fast load times and responsive interfaces.",
-                    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>`
+                    title: "AI Engineer",
+                    desc: "Build modern AI systems including Computer Vision and Natural Language Processing. Ensure model accuracy, feasibility, and practicality.",
+                    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c0 4.5 2 6.5 6.5 6.5-4.5 0-6.5 2-6.5 6.5 0-4.5-2-6.5-6.5-6.5 4.5 0 6.5-2 6.5-6.5z" />
+  
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 14c0 1.5.7 2.2 2.2 2.2-1.5 0-2.2.7-2.2 2.2 0-1.5-.7-2.2-2.2-2.2 1.5 0 2.2-.7 2.2-2.2z" />
+</svg>
+`
                 },
                 {
-                    title: "Mobile App Development",
-                    desc: "Develop multi-platform mobile apps using Flutter to guarantee highly performant, flat experiences.",
-                    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`
-                },
-                {
-                    title: "Database Management",
-                    desc: "Efficient database modeling and optimized queries in Oracle, MySQL, and MongoDB.",
+                    title: "Data Engineer",
+                    desc: "Develop data ingestion pipelines and build data warehouses for advanced analytics and processing.",
                     icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>`
+                },
+                {
+                    title: "Backend Developer",
+                    desc: "Build modern software core systems ensuring optimized and seamless operations.",
+                    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>`
                 }
             ];
         }
@@ -235,13 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const getHeroTypingTexts = (lang) => {
         if (lang === 'en') {
             return [
-                "IT/Software Engineering Student at NTTU",
-                "Full-stack Web & Mobile Developer"
+                "Third-year IT student majoring in Data Science",
+                "AI Engineer & Data Engineer"
             ];
         }
         return [
-            "Sinh viên IT/Software Engineering tại NTTU",
-            "Full-stack Web & Mobile Developer"
+            "Sinh viên IT năm 3 ngành Khoa Học Dữ Liệu",
+            "AI Engineer & Data Engineer"
         ];
     };
 
@@ -730,14 +735,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemElement.className = 'contact__info-item flex';
 
                 const contactLabel = currentLang === 'en' && item.label === 'Số điện thoại / Zalo' ? 'Phone / Zalo' : item.label;
-
-                itemElement.innerHTML = `
+                if (item.url) {
+                    itemElement.innerHTML = `
                     <div class="contact__info-icon">${item.icon}</div>
                     <div class="contact__info-content">
                         <span class="contact__info-label">${contactLabel}</span>
                         <a href="${item.url}" target="_blank" rel="noopener" class="contact__info-link">${item.value}</a>
                     </div>
                 `;
+                } else {
+                    itemElement.innerHTML = `
+                    <div class="contact__info-icon">${item.icon}</div>
+                    <div class="contact__info-content">
+                        <span class="contact__info-label">${contactLabel}</span>
+                        <a href="#contact" target="_blank" rel="noopener" class="contact__info-link">${item.value}</a>
+                    </div>`;
+                }
+
 
                 contactList.appendChild(itemElement);
             });
