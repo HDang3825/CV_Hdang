@@ -578,13 +578,13 @@ textarea {
 }
 
 .about__text {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     line-height: 1.6;
 }
 
 .about__list {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     padding-left: var(--spacing-md);
     list-style-type: square;
@@ -657,7 +657,7 @@ textarea {
 }
 
 .card-service__desc {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
@@ -861,7 +861,7 @@ textarea {
 }
 
 .timeline__feature-list {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     padding-left: var(--spacing-md);
     list-style-type: square;
